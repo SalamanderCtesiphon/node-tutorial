@@ -3,8 +3,11 @@ const path = require('path');
 const fs = require('fs');
 
 const server = http.createServer((req, res) => {
-  let filePath = path.join(__dirname, 'public', req.url === '/' ?
-    'index.html' : req.url);
+  let filePath = path.join(
+    __dirname, 
+    'public', 
+    req.url === '/' ? 'index.html' : req.url
+    );
  
   let extname = path.extname(filePath);
 
@@ -41,7 +44,7 @@ const server = http.createServer((req, res) => {
         res.end(`Server Error: ${err.code}`);
       }
     } else {
-      res.writeHead(200, { 'Content-Type': 'text/html'});
+      res.writeHead(200, { 'Content-Type': contentType });
       res.end(content, 'utf-8');
     }
   })
